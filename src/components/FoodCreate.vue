@@ -52,7 +52,7 @@ import { reactive } from 'vue'
 export default {
   setup() {
     const form = reactive({
-      name: 'Chicken Brest',
+      name: 'Chicken Breast',
       measurement: 'oz',
       size: '1',
       protein: '7',
