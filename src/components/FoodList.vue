@@ -1,6 +1,7 @@
 <template>
   <br />
   <div class="container">
+    <h4>Data stored in firebase</h4>
     <div class="table-responsive">
       <table class="table">
         <thead>
