@@ -1,4 +1,4 @@
-A project I'm building on and refactoring over time as I learn Vue.js
+# A project I'm building on and refactoring over time as I learn Vue.js
 
 # vue-firebase-diet-generator
 
