@@ -226,7 +226,7 @@
           <td>{{ meal.protein }}</td>
           <td>{{ meal.carbs }}</td>
           <td>{{ meal.fats }}</td>
-          <td>{{ meal.generatedMeal }}</td>
+          <td id="generated">{{ meal.generatedMeal }}</td>
         </tr>
       </tbody>
     </table>
@@ -298,3 +298,9 @@ export default {
   },
 }
 </script>
+<style>
+/* table cell with id green make font color green */
+#generated {
+  font-weight: bold;
+}
+</style>
