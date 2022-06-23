@@ -231,8 +231,7 @@
       </tbody>
     </table>
 
-    <table id="generatedMeals"></table>
-
+    <div id="bottom"></div>
     <br />
   </div>
 </template>
@@ -247,17 +246,17 @@ export default {
   setup() {
     const form = reactive({
       sex: 'male',
-      weightLbs: '165',
-      age: '26',
-      heightFt: '5',
-      heightIn: '7',
+      weightLbs: 165,
+      age: 26,
+      heightFt: 5,
+      heightIn: 7,
       activity: 'moderate',
       goal: 'gain',
-      rate: '5',
+      rate: 5,
       proteinPercent: 35,
       carbsPercent: 35,
       fatsPercent: 30,
-      meals: '5',
+      meals: 5,
     })
 
     let data = reactive({
