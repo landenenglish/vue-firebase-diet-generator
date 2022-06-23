@@ -200,12 +200,11 @@
       </div>
     </form>
     <br />
-    <br />
 
     <h5 id="output1" class="text-start">{{ data.output.output1 }}</h5>
-    <br />
+
     <h5 id="output2" class="text-start">{{ data.output.output2 }}</h5>
-    <br />
+
     <h5 id="output3" class="text-start">{{ data.output.output3 }}</h5>
     <br />
     <br />
