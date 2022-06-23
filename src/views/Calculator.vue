@@ -289,7 +289,6 @@ export default {
 
       for (let i = 0; i < generatedMeals.length; i++) {
         data.output.mealsArray[i].generatedMeal = generatedMeals[i]
-        console.log(data.output.mealsArray[i].generatedMeal)
       }
     }
 
