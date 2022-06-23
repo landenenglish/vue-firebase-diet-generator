@@ -1,6 +1,5 @@
 # vue-firebase-diet-generator
-# A project I'm building on and refactoring over time as I learn Vue.js
-
+### A project I'm building on and refactoring over time as I learn Vue.js
 ### Implemented food database with CRUD functionality
 ### Generates a meal plan that fits the macros for each meal from the macro calculator using the food database
 
