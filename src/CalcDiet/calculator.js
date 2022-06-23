@@ -98,8 +98,6 @@ function mifflin(
 
 //return data to display
 function display(TDEE, goal, rate, protein, carbs, fats, meals) {
-  // return data to display in display component
-
   output1 = `Your total daily energy expenditure is ${TDEE} calories (maintenance).`
 
   if (goal == 'gain') {
@@ -119,7 +117,6 @@ function display(TDEE, goal, rate, protein, carbs, fats, meals) {
     }lbs per week.`
     output3 = `Macros: ${protein}g protein, ${carbs}g carbs, ${fats}g fats per day or ${proteinPerMeal}g protein, ${carbsPerMeal}g carbs, ${fatsPerMeal}g fats per meal.`
 
-    // create an object with one meal for each meal and protein, carbs, and fats the same for each meal
     let mealsArray = []
     for (let i = 0; i < meals; i++) {
       mealsArray.push({

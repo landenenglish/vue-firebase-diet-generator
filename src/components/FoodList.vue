@@ -2,6 +2,13 @@
   <br />
   <div class="container">
     <h4>Data stored in firebase</h4>
+    <router-link :to="`/calculator`">
+      <button class="btn btn-primary mt-3">
+        Calculate Diet With Foods Database
+      </button>
+    </router-link>
+    <br />
+    <br />
     <div class="table-responsive">
       <table class="table">
         <thead>

@@ -1,11 +1,9 @@
-<!-- This page will be a submission from that takes in: -->
-<!-- Gender, Weight, Age, Height(ft), Height(in), Activity Level, Goal of weight loss or weight gain, Rate of change -->
-
 <template>
   <div class="container">
     <div class="row">
       <div class="col-12">
         <h1 class="text-center">Nutrition Calculator</h1>
+        <h5>(pre-filled to test quickly)</h5>
       </div>
     </div>
     <br />
@@ -212,8 +210,6 @@
     <br />
     <br />
 
-    <!-- data.output.mealsArray is an array of objects that each contain protein, carbs, and fats -->
-    <!-- loop over the aray and display a table row for each of them -->
     <table class="table table-striped">
       <thead>
         <tr>
@@ -250,18 +246,18 @@ import { getAllFoods } from '@/firebase'
 export default {
   setup() {
     const form = reactive({
-      sex: '',
-      weightLbs: '',
-      age: '',
-      heightFt: '',
-      heightIn: '',
-      activity: '',
-      goal: '',
-      rate: '',
+      sex: 'male',
+      weightLbs: '165',
+      age: '26',
+      heightFt: '5',
+      heightIn: '7',
+      activity: 'moderate',
+      goal: 'gain',
+      rate: '5',
       proteinPercent: 35,
       carbsPercent: 35,
       fatsPercent: 30,
-      meals: '',
+      meals: '5',
     })
 
     let data = reactive({

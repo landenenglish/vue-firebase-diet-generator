@@ -2,6 +2,7 @@
   <div class="container">
     <div class="card card-body mt-4">
       <h1>Food Database</h1>
+      <h5>(pre-filled to test quickly)</h5>
       <form @submit.prevent="onSubmit">
         <div class="form-group">
           <label>Food Name</label>
@@ -15,6 +16,8 @@
             <option value="g">g</option>
             <option value="oz">oz</option>
             <option value="cup">cup</option>
+            <option value="tbsp">tbsp</option>
+            <option value="">{{ form.name }}</option>
           </select>
         </div>
         <!-- serving Size -->
