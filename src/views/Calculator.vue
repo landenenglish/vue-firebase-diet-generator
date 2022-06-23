@@ -1,5 +1,7 @@
+<!-- This page will be a submission from that takes in: -->
+<!-- Gender, Weight, Age, Height(ft), Height(in), Activity Level, Goal of weight loss or weight gain, Rate of change -->
+
 <template>
-  <!-- put the entire component in container bootstrap marigin -->
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -135,7 +137,7 @@
       </div>
       <hr />
 
-      <!-- percentage of calories from protein, carbs, and fats with default  -->
+      <!-- percentage of calories from protein, carbs, and fats with default of 33% for each -->
       <div class="row mb-3">
         <legend class="col-form-label col-sm-2 pt-0" required>Macro(%)</legend>
         <div class="col">
@@ -210,6 +212,8 @@
     <br />
     <br />
 
+    <!-- data.output.mealsArray is an array of objects that each contain protein, carbs, and fats -->
+    <!-- loop over the aray and display a table row for each of them -->
     <table class="table table-striped">
       <thead>
         <tr>
@@ -217,6 +221,7 @@
           <th scope="col">Protein</th>
           <th scope="col">Carbs</th>
           <th scope="col">Fats</th>
+          <th scope="col">Randomly Generated Meal Using Database</th>
         </tr>
       </thead>
       <tbody>
@@ -225,40 +230,73 @@
           <td>{{ meal.protein }}</td>
           <td>{{ meal.carbs }}</td>
           <td>{{ meal.fats }}</td>
+          <td>{{ meal.generatedMeal }}</td>
         </tr>
       </tbody>
     </table>
+
+    <table id="generatedMeals"></table>
+
     <br />
   </div>
 </template>
 
 <script>
-import { reactive } from 'vue'
-import { getUserData } from '@/CalcDiet/calculator'
+import { reactive, computed, onMounted } from 'vue'
+import { getUserData } from '@/CalcDiet/calculator.js'
+import { generateMeal } from '@/CalcDiet/generateMeals.js'
+import { getAllFoods } from '@/firebase'
 
 export default {
   setup() {
     const form = reactive({
-      sex: 'male',
-      weightLbs: 165,
-      age: 25,
-      heightFt: 5,
-      heightIn: 7,
-      activity: 'moderate',
-      goal: 'gain',
-      rate: 5,
-      proteinPercent: 34,
-      carbsPercent: 33,
-      fatsPercent: 33,
-      meals: '6',
+      sex: '',
+      weightLbs: '',
+      age: '',
+      heightFt: '',
+      heightIn: '',
+      activity: '',
+      goal: '',
+      rate: '',
+      proteinPercent: 35,
+      carbsPercent: 35,
+      fatsPercent: 30,
+      meals: '',
     })
 
     let data = reactive({
       output: '',
     })
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
       data.output = getUserData(form)
+
+      const foodsArray = []
+      const foods = await getAllFoods()
+      foods.forEach((food) => {
+        foodsArray.push(food)
+      })
+
+      const mealsArray = []
+      data.output.mealsArray.forEach((meal) => {
+        mealsArray.push(meal)
+      })
+
+      const generatedMeals = []
+      for (let i = 0; i < mealsArray.length; i++) {
+        const meal = await generateMeal(
+          mealsArray[i].protein,
+          mealsArray[i].carbs,
+          mealsArray[i].fats,
+          foodsArray
+        )
+        generatedMeals.push(meal)
+      }
+
+      for (let i = 0; i < generatedMeals.length; i++) {
+        data.output.mealsArray[i].generatedMeal = generatedMeals[i]
+        console.log(data.output.mealsArray[i].generatedMeal)
+      }
     }
 
     return { form, onSubmit, data }
