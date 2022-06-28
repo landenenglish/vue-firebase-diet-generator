@@ -1,10 +1,10 @@
-let userData = {}
+let userData: any
 let output1 = ''
 let output2 = ''
 let output3 = ''
 let output4 = ''
 
-export const getUserData = (userInput) => {
+export const getUserData = (userInput: any) => {
   // set user data object to user input
   userData = userInput
 
@@ -45,17 +45,17 @@ export const getUserData = (userInput) => {
 
 //calculate BMR from inputs with Mifflin St Jeor Equation
 function mifflin(
-  sex,
-  kg,
-  age,
-  cm,
-  activity,
-  goal,
-  rate,
-  protein,
-  carbs,
-  fats,
-  meals
+  sex: string,
+  kg: number,
+  age: number,
+  cm: number,
+  activity: any,
+  goal: any,
+  rate: number,
+  protein: number,
+  carbs: number,
+  fats: number,
+  meals: number
 ) {
   let BMR = 0
   let factor = 0
@@ -97,7 +97,15 @@ function mifflin(
 }
 
 //return data to display
-function display(TDEE, goal, rate, protein, carbs, fats, meals) {
+function display(
+  TDEE: number,
+  goal: string,
+  rate: number,
+  protein: number,
+  carbs: number,
+  fats: number,
+  meals: number
+) {
   output1 = `Your total daily energy expenditure is ${TDEE} calories (maintenance).`
 
   if (goal == 'gain') {

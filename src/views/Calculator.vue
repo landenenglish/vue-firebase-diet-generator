@@ -237,8 +237,8 @@
 
 <script>
 import { reactive, computed, onMounted } from 'vue'
-import { getUserData } from '@/CalcDiet/calculator.js'
-import { generateMeal } from '@/CalcDiet/generateMeals.js'
+import { getUserData } from '@/CalcDiet/calculator'
+import { generateMeal } from '@/CalcDiet/generateMeals'
 import { getAllFoods } from '@/firebase'
 
 export default {

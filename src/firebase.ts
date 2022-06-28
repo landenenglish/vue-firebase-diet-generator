@@ -17,11 +17,11 @@ const firebaseApp = firebase.initializeApp(config)
 const db = firebaseApp.firestore()
 const foodsCollection = db.collection('foods')
 
-export const createFood = (food) => {
+export const createFood = (food: firebase.firestore.DocumentData) => {
   return foodsCollection.add(food)
 }
 
-export const getFood = async (id) => {
+export const getFood = async (id: string | undefined) => {
   const food = await foodsCollection.doc(id).get()
   return food.exists ? food.data() : null
 }
@@ -31,16 +31,19 @@ export const getAllFoods = async () => {
   return foods.docs.map((doc) => doc.data())
 }
 
-export const updateFood = (id, food) => {
+export const updateFood = (
+  id: string | undefined,
+  food: firebase.firestore.UpdateData
+) => {
   return foodsCollection.doc(id).update(food)
 }
 
-export const deleteFood = (id) => {
+export const deleteFood = (id: string | undefined) => {
   return foodsCollection.doc(id).delete()
 }
 
 export const loadFoods = () => {
-  const foods = ref([])
+  const foods: any = ref([])
   const close = foodsCollection.onSnapshot((snapshot) => {
     foods.value = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
   })
