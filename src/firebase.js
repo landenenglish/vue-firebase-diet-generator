@@ -4,12 +4,12 @@ import 'firebase/compat/firestore'
 import { ref, onUnmounted } from 'vue'
 
 const config = {
-  apiKey: 'AIzaSyA_suCUCMOrIS0fDUOnxemxXZl-xG-Glso',
-  authDomain: 'vue-firebase-crud-f61f8.firebaseapp.com',
-  projectId: 'vue-firebase-crud-f61f8',
-  storageBucket: 'vue-firebase-crud-f61f8.appspot.com',
-  messagingSenderId: '776039788891',
-  appId: '1:776039788891:web:0c5a52716e615fde56aa7e',
+  apiKey: process.env.VUE_APP_FIREBASE_APIKEY,
+  authDomain: process.env.VUE_APP_FIREBASE_AUTHDOMAIN,
+  projectId: process.env.VUE_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.VUE_APP_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.VUE_APP_FIREBASE_APPID,
 }
 
 const firebaseApp = firebase.initializeApp(config)
