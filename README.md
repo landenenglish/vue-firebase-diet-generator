@@ -9,11 +9,12 @@
 ## Demo
 ### https://vue-firebase-diet-generator.netlify.app/
 
+- - - -
 ## Technologies
 #### Vue.js
 #### Firebase Firestore
 
-
+- - - -
 ## Project setup
 Create a firebase firestore database with a "foods" collection and paste the config info in src/firebase.js
 
