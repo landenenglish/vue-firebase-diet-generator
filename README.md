@@ -16,7 +16,7 @@
 ## Project setup
 Create a firebase firestore database with a "foods" collection and paste the config info in src/firebase.js
 
-https://firebase.google.com/firebase
+https://firebase.google.com/
 Add project, call it "Foods" or similar
 Disable google analytics, create project
 Click the web (</>) button to add the web app
