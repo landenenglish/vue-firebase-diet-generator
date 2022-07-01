@@ -18,13 +18,13 @@ Create a firebase firestore database with a "foods" collection and paste the con
 
 https://firebase.google.com/
 * Add project, call it "Foods" or similar
-Disable google analytics, create project
-Click the web (</>) button to add the web app
-Name the app, "VueFire Diet Generator" or similar, don't select hosting
-Copy the "firebaseConfig" variable and paste it in src/firebase.js right under imports. Rename it to just "config" and delete the "import config from '@/apikey'" line. You may want to use .env or similar to protect your config when pushing to github.
-In firebase: Go to build, firestore database, create database, start in test mode, enable
-Click "Start collection" and name the collection id "foods", auto ID the Document ID, save.
-npm install, then npm run serve. 
+* Disable google analytics, create project
+* Click the web (</>) button to add the web app
+* Name the app, "VueFire Diet Generator" or similar, don't select hosting
+* Copy the "firebaseConfig" variable and paste it in src/firebase.js right under imports. Rename it to just "config" and delete the "import config from * '@/apikey'" line. You may want to use .env or similar to protect your config when pushing to github.
+* In firebase: Go to build, firestore database, create database, start in test mode, enable
+* Click "Start collection" and name the collection id "foods", auto ID the Document ID, save.
+* npm install, then npm run serve. 
 
 
 ```
