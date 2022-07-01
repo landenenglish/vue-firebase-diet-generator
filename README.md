@@ -9,8 +9,8 @@
 ### https://vue-firebase-diet-generator.netlify.app/
 
 ## Technologies
-### Vue.js
-### Firebase Firestore
+#### Vue.js
+#### Firebase Firestore
 
 
 ## Project setup
