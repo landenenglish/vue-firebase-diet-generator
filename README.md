@@ -3,7 +3,7 @@
 
 ## Description
 ### The main goal of this project is for the user to generate a diet plan using both a food datatbase and a calorie/macro calculator.
-### The user enteres the foods they like to eat with nutritional information in the database, then caclulates their calories and macros based on their goal, then a meal plan with correct measurements for each meal is randomly generated with the foods they entered in the database.
+### The user enters the foods they like to eat with nutritional information in the database, then caclulates their calories and macros based on their goal, then a meal plan with correct measurements for each meal is randomly generated with the foods they entered in the database.
 
 - - - -
 ## Demo
@@ -24,11 +24,12 @@ Create a firebase firestore database with a "foods" collection and paste the con
 * Disable google analytics, create project
 * Click the web (</>) button to add the web app
 * Name the app, "VueFire Diet Generator" or similar, don't select hosting
-* Copy the "firebaseConfig" variable and paste it in src/firebase.js right under imports. Rename it to just "config" and delete the "import config from * '@/apikey'" line. You may want to use .env or similar to protect your config when pushing to github.
+* Copy the "firebaseConfig" variable and paste it in src/firebase.js right under imports. Rename it to just "config" and delete the "import config from * '@/apikey'" line. You may want to use .env or similar to protect your config when pushing to GitHub.
 * In firebase: Go to build, firestore database, create database, start in test mode, enable
 * Click "Start collection" and name the collection id "foods", auto ID the Document ID, save.
 * npm run serve
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* Add foods to the database (the more variety the better for generating meals)
+* See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 - - - -
