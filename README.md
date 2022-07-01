@@ -11,14 +11,15 @@
 
 - - - -
 ## Technologies
-#### Vue.js
-#### Firebase Firestore
+* Vue.js
+* Firebase Firestore
 
 - - - -
 ## Project setup
-Create a firebase firestore database with a "foods" collection and paste the config info in src/firebase.js
+Create a firebase firestore database with a "foods" collection and paste the config info in src/firebase.js:
 
-https://firebase.google.com/
+* npm install
+* https://firebase.google.com/
 * Add project, call it "Foods" or similar
 * Disable google analytics, create project
 * Click the web (</>) button to add the web app
@@ -26,17 +27,13 @@ https://firebase.google.com/
 * Copy the "firebaseConfig" variable and paste it in src/firebase.js right under imports. Rename it to just "config" and delete the "import config from * '@/apikey'" line. You may want to use .env or similar to protect your config when pushing to github.
 * In firebase: Go to build, firestore database, create database, start in test mode, enable
 * Click "Start collection" and name the collection id "foods", auto ID the Document ID, save.
-* npm install, then npm run serve. 
-
+* npm run serve
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 - - - -
 ## Issues
-*
-*
-*
-*
+* The code in general is currently messy and lacking comments, I plan to refactor before moving forward
 
 - - - -
 ## Changelog
