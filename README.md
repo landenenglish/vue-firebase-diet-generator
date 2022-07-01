@@ -2,7 +2,7 @@
 
 
 ## Description
-### The main goal of this project is for the user to be able to generate a diet plan using both a food datatbase and a calorie/macro calculator.
+### The main goal of this project is for the user to generate a diet plan using both a food datatbase and a calorie/macro calculator.
 ### The user enteres the foods they like to eat with nutritional information in the database, then caclulates their calories and macros based on their goal, then a meal plan with correct measurements for each meal is randomly generated with the foods they entered in the database.
 
 ## Demo
