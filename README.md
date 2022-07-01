@@ -36,8 +36,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 * The code in general is currently messy and lacking comments, I plan to refactor before moving forward
 
 - - - -
-## Changelog
-*
-*
-*
-*
+## Changelog & Future Features
+- [x] Setup Firebase Firestore with full CRUD functionality
+- [x] Foods UI: add, view all, edit, delete
+- [x] Calculate Calories & Macros UI
+- [x] Generate random meals with foods database
+- [ ] Re-generate specific meal
+- [ ] Select foods the user wishes to use from the database to generate meal
+- [ ] Consider authentication (stretch goal)
+- [ ] Improve UI/Design in general once fully functional, custom CSS
