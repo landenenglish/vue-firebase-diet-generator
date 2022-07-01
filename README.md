@@ -28,23 +28,12 @@ https://firebase.google.com/
 * Click "Start collection" and name the collection id "foods", auto ID the Document ID, save.
 * npm install, then npm run serve. 
 
-
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Customize configuration
-
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+- - - -
+## Issues
+*
+*
+*
+*
