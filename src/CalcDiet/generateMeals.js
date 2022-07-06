@@ -3,7 +3,7 @@ export const generateMeal = (protein, carbs, fat, foods) => {
     foods[i].protein = parseInt(foods[i].protein)
     foods[i].carbs = parseInt(foods[i].carbs)
     foods[i].fat = parseInt(foods[i].fat)
-    foods[i].size = parseInt(foods[i].size)
+    foods[i].size = 1
   }
 
   let meal = ''

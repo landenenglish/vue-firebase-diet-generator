@@ -135,7 +135,7 @@
       </div>
       <hr />
 
-      <!-- percentage of calories from protein, carbs, and fats with default of 33% for each -->
+      <!-- percentage of calories from protein, carbs, and fats-->
       <div class="row mb-3">
         <legend class="col-form-label col-sm-2 pt-0" required>Macro(%)</legend>
         <div class="col">
@@ -236,7 +236,7 @@
 </template>
 
 <script>
-import { reactive, computed, onMounted } from 'vue'
+import { reactive } from 'vue'
 import { getUserData } from '@/CalcDiet/calculator.js'
 import { generateMeal } from '@/CalcDiet/generateMeals.js'
 import { getAllFoods } from '@/firebase'
@@ -278,7 +278,7 @@ export default {
 
       const generatedMeals = []
       for (let i = 0; i < mealsArray.length; i++) {
-        const meal = await generateMeal(
+        const meal = generateMeal(
           mealsArray[i].protein,
           mealsArray[i].carbs,
           mealsArray[i].fats,
@@ -297,7 +297,6 @@ export default {
 }
 </script>
 <style>
-/* table cell with id green make font color green */
 #generated {
   font-weight: bold;
 }

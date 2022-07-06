@@ -18,12 +18,6 @@
           <option value="">{{ form.name }}</option>
         </select>
       </div>
-      <!-- serving Size -->
-      <!-- Update Lable to selected measurment -->
-      <div class="form-group">
-        <label>Serving Size ({{ form.measurement }})</label>
-        <input v-model="form.size" class="form-control" required />
-      </div>
       <!-- Protein Per Serving -->
       <div class="form-group">
         <label>Grams of Protein Per Serving</label>
@@ -68,7 +62,6 @@ export default {
       const food = await getFood(foodId.value)
       form.name = food.name
       form.measurement = food.measurement
-      form.size = food.size
       form.protein = food.protein
       form.carbs = food.carbs
       form.fat = food.fat
@@ -79,7 +72,6 @@ export default {
       router.push('/')
       form.name = ''
       form.measurement = ''
-      form.size = ''
       form.protein = ''
       form.carbs = ''
       form.fat = ''

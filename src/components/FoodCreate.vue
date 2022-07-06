@@ -18,14 +18,10 @@
             <option value="cup">cup</option>
             <option value="tbsp">tbsp</option>
             <option value="">{{ form.name }}</option>
+            <!-- i want an option with form.name and value of form.name -->
           </select>
         </div>
-        <!-- serving Size -->
-        <!-- Update Lable to selected measurment -->
-        <div class="form-group">
-          <label>Serving Size ({{ form.measurement }})</label>
-          <input v-model="form.size" class="form-control" required />
-        </div>
+
         <!-- Protein Per Serving -->
         <div class="form-group">
           <label>Grams of Protein Per Serving</label>
@@ -57,7 +53,6 @@ export default {
     const form = reactive({
       name: 'Chicken Breast',
       measurement: 'oz',
-      size: '1',
       protein: '7',
       carbs: '0',
       fat: '0',
@@ -67,7 +62,6 @@ export default {
       await createFood({ ...form })
       form.name = ''
       form.measurement = ''
-      form.size = ''
       form.protein = ''
       form.carbs = ''
       form.fat = ''
