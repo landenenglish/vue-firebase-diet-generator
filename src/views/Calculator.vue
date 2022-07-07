@@ -226,9 +226,19 @@
           <td>{{ meal.carbs }}</td>
           <td>{{ meal.fats }}</td>
           <td id="generated">{{ meal.generatedMeal }}</td>
+          <td>
+            <button
+              class="btn btn-danger btn-sm"
+              @click="reGenerateSingleMeal(meal.mealNumber - 1)"
+            >
+              ReGenerate
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
+
+    <button class="btn btn-danger btn-sm" @click="saveDiet()">saveDiet</button>
 
     <div id="bottom"></div>
     <br />
@@ -236,10 +246,15 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import { getUserData } from '@/CalcDiet/calculator.js'
 import { generateMeal } from '@/CalcDiet/generateMeals.js'
-import { getAllFoods } from '@/firebase'
+import { getAllFoods, createUserDiet, getAllUserDiets } from '@/firebase'
+import { onMounted, ref } from 'vue'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+
+// I want to store the generated meal in the database for the user.
+// I need to get the user's id and then store the meal in the database.
 
 export default {
   setup() {
@@ -275,7 +290,6 @@ export default {
       data.output.mealsArray.forEach((meal) => {
         mealsArray.push(meal)
       })
-
       const generatedMeals = []
       for (let i = 0; i < mealsArray.length; i++) {
         const meal = generateMeal(
@@ -290,9 +304,52 @@ export default {
       for (let i = 0; i < generatedMeals.length; i++) {
         data.output.mealsArray[i].generatedMeal = generatedMeals[i]
       }
+
+      // const currentUser = getAuth()
+      // const currentUserID = currentUser.currentUser.uid
+      // console.log(currentUserID)
+      // let userDataObject = {
+      //   uid: '',
+      //   meals: {},
+      // }
+      // userDataObject.uid = currentUserID
+      // userDataObject.meals = data.output.mealsArray
+      // createUserDiet(userDataObject)
     }
 
-    return { form, onSubmit, data }
+    // each meal is being displayed in a table.
+    // I want a button beside each meal that will regenerate the meal.
+    const reGenerateSingleMeal = async (mealNumber) => {
+      const foodsArray = []
+      const foods = await getAllFoods()
+      foods.forEach((food) => {
+        foodsArray.push(food)
+      })
+
+      // generate a single meal
+      const meal = generateMeal(
+        data.output.mealsArray[mealNumber].protein,
+        data.output.mealsArray[mealNumber].carbs,
+        data.output.mealsArray[mealNumber].fats,
+        foodsArray
+      )
+      data.output.mealsArray[mealNumber].generatedMeal = meal
+    }
+
+    const saveDiet = () => {
+      const currentUser = getAuth()
+      const currentUserID = currentUser.currentUser.uid
+      console.log(currentUserID)
+      let userDataObject = {
+        uid: '',
+        meals: {},
+      }
+      userDataObject.uid = currentUserID
+      userDataObject.meals = data.output.mealsArray
+      createUserDiet(userDataObject)
+    }
+
+    return { form, onSubmit, data, reGenerateSingleMeal, saveDiet }
   },
 }
 </script>
