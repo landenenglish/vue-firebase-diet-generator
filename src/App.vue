@@ -1,6 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
+      <a class="navbar-brand" href="#">Menu</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -100,6 +101,10 @@ ul {
   align-items: center;
   width: 100%;
   font-weight: bold;
+}
+
+nav a {
+  text-align: center;
 }
 
 /* #navbarSupportedContent {
