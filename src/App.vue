@@ -1,11 +1,13 @@
 <template>
   <nav>
-    <router-link to="/">Food Database</router-link> |
-    <router-link to="/calculator">Nutrition Calculator</router-link> |
-    <router-link to="/signin">Sign In</router-link> |
-    <router-link to="/register">Register</router-link> |
-    <router-link to="/yourdiets">Your Diets</router-link> |
-    <button @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
+    <router-link to="/">Food Database</router-link>
+    <router-link to="/calculator">Nutrition Calculator</router-link>
+    <router-link to="/signin">Sign In</router-link>
+    <router-link to="/register">Register</router-link>
+    <router-link to="/yourdiets">Your Diets</router-link>
+    <button class="btn btn-danger" @click="handleSignOut" v-if="isLoggedIn">
+      Sign Out
+    </button>
   </nav>
   <router-view />
 </template>
@@ -48,17 +50,28 @@ const handleSignOut = () => {
 }
 
 nav {
-  padding: 30px;
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: #333;
+  margin-bottom: 20px;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #f4f4f4;
   font-size: 1.2em;
   text-decoration: none;
 }
 
+nav a:hover {
+  color: #6ba9e7;
+}
+
 nav a.router-link-exact-active {
-  color: #33b3fd;
+  color: #6ba9e7;
 }
 </style>

@@ -4,11 +4,7 @@
     <h4>Your Diets</h4>
 
     <hr />
-    <div
-      class="table-responsive"
-      v-for="{ id, meals, uid } in userDiets"
-      :key="id"
-    >
+    <div v-for="{ id, meals, uid } in userDiets" :key="id">
       <table class="table" v-if="uid === currentUserID">
         <thead>
           <tr>
