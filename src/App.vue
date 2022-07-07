@@ -1,14 +1,54 @@
 <template>
-  <nav>
-    <router-link to="/">Food Database</router-link>
-    <router-link to="/calculator">Nutrition Calculator</router-link>
-    <router-link to="/signin">Sign In</router-link>
-    <router-link to="/register">Register</router-link>
-    <router-link to="/yourdiets">Your Diets</router-link>
-    <button class="btn btn-danger" @click="handleSignOut" v-if="isLoggedIn">
-      Sign Out
-    </button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-4 mb-lg-0">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/">Food Database</router-link>
+          </li>
+          <li>
+            <router-link class="nav-link" to="/calculator"
+              >Nutrition Calculator</router-link
+            >
+          </li>
+          <li>
+            <router-link class="nav-link" to="/yourdiets"
+              >Your Diets</router-link
+            >
+          </li>
+
+          <li>
+            <router-link class="nav-link" to="/register">Register</router-link>
+          </li>
+          <li>
+            <router-link class="nav-link" to="/signin">Sign In</router-link>
+          </li>
+
+          <li>
+            <button
+              class="btn btn-danger"
+              @click="handleSignOut"
+              v-if="isLoggedIn"
+            >
+              Sign Out
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
+
   <router-view />
 </template>
 
@@ -16,6 +56,7 @@
 import { onMounted, ref } from 'vue'
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 import { useRouter } from 'vue-router'
+import Sidebar from '@/components/sidebar/Sidebar.vue'
 
 const router = useRouter()
 const isLoggedIn = ref(false)
@@ -49,29 +90,21 @@ const handleSignOut = () => {
   color: #2c3e50;
 }
 
-nav {
-  padding: 20px;
+ul a.router-link-exact-active {
+  color: #6ba9e7;
+}
 
+ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-
-  background-color: #333;
-  margin-bottom: 20px;
-}
-
-nav a {
+  width: 100%;
   font-weight: bold;
-  color: #f4f4f4;
-  font-size: 1.2em;
-  text-decoration: none;
 }
 
-nav a:hover {
-  color: #6ba9e7;
-}
-
-nav a.router-link-exact-active {
-  color: #6ba9e7;
-}
+/* #navbarSupportedContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 </style>
