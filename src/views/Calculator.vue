@@ -353,15 +353,20 @@ export default {
 
     const saveDiet = () => {
       const currentUser = getAuth()
-      const currentUserID = currentUser.currentUser.uid
-      console.log(currentUserID)
-      let userDataObject = {
-        uid: '',
-        meals: {},
+
+      if (currentUser.currentUser === null) {
+        alert('You must be logged in to save your diet')
+      } else {
+        const currentUserID = currentUser.currentUser.uid
+        let userDataObject = {
+          uid: '',
+          meals: {},
+        }
+        userDataObject.uid = currentUserID
+        userDataObject.meals = data.output.mealsArray
+        createUserDiet(userDataObject)
+        alert('Diet saved. You can view your diets in the My Diets tab.')
       }
-      userDataObject.uid = currentUserID
-      userDataObject.meals = data.output.mealsArray
-      createUserDiet(userDataObject)
     }
 
     return { form, onSubmit, data, reGenerateSingleMeal, saveDiet }

@@ -57,7 +57,6 @@
 import { onMounted, ref } from 'vue'
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 import { useRouter } from 'vue-router'
-import Sidebar from '@/components/sidebar/Sidebar.vue'
 
 const router = useRouter()
 const isLoggedIn = ref(false)
