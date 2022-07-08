@@ -215,7 +215,11 @@
         </fieldset>
 
         <div class="col-md-12 text-center">
-          <button type="submit" class="btn btn-primary text-center">
+          <button
+            type="submit"
+            class="btn btn-primary text-center"
+            @click="scrollToElement"
+          >
             Calculate
           </button>
         </div>
@@ -272,17 +276,23 @@
 </template>
 
 <script>
-import { reactive, computed } from 'vue'
+import { reactive } from 'vue'
 import { getUserData } from '@/CalcDiet/calculator.js'
 import { generateMeal } from '@/CalcDiet/generateMeals.js'
 import { getAllFoods, createUserDiet, getAllUserDiets } from '@/firebase'
-import { onMounted, ref } from 'vue'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-
-// I want to store the generated meal in the database for the user.
-// I need to get the user's id and then store the meal in the database.
+import { getAuth } from 'firebase/auth'
 
 export default {
+  methods: {
+    scrollToElement() {
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight - 200,
+          behavior: 'smooth',
+        })
+      }, 250)
+    },
+  },
   setup() {
     const form = reactive({
       sex: 'male',
@@ -306,7 +316,6 @@ export default {
 
     const onSubmit = async () => {
       data.submitted = true
-
       data.output = getUserData(form)
 
       const foodsArray = []
@@ -334,28 +343,15 @@ export default {
         data.output.mealsArray[i].generatedMeal = generatedMeals[i]
       }
 
-      // const currentUser = getAuth()
-      // const currentUserID = currentUser.currentUser.uid
-      // console.log(currentUserID)
-      // let userDataObject = {
-      //   uid: '',
-      //   meals: {},
-      // }
-      // userDataObject.uid = currentUserID
-      // userDataObject.meals = data.output.mealsArray
-      // createUserDiet(userDataObject)
+      // now scroll to the output section
     }
 
-    // each meal is being displayed in a table.
-    // I want a button beside each meal that will regenerate the meal.
     const reGenerateSingleMeal = async (mealNumber) => {
       const foodsArray = []
       const foods = await getAllFoods()
       foods.forEach((food) => {
         foodsArray.push(food)
       })
-
-      // generate a single meal
       const meal = generateMeal(
         data.output.mealsArray[mealNumber].protein,
         data.output.mealsArray[mealNumber].carbs,

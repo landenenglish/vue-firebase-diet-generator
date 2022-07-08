@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <img src="./assets/logo.png" class="navbar-brand" alt="" />
-      <span class="navbar-brand"> Menu:</span>
+      <span class="navbar-brand"> Menu</span>
       <button
         class="navbar-toggler"
         type="button"
