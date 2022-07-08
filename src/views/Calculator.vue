@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <div class="card card-body mt-4">
-      <div class="row">
+  <div class="container bg-dark text-white">
+    <div class="card card-body mt-4 bg-dark text-white border-light">
+      <div class="row bg-dark text-white">
         <div class="col-12">
           <h1 class="text-center">Nutrition Calculator</h1>
           <h5>(pre-filled to test quickly)</h5>
@@ -11,9 +11,13 @@
 
       <form @submit.prevent="onSubmit">
         <!-- Sex -->
-        <fieldset class="row mb-3" id="sex">
+        <fieldset class="row mb-3 bg-dark text-white" id="sex">
           <label>Sex</label>
-          <select v-model="form.sex" class="form-select" required>
+          <select
+            v-model="form.sex"
+            class="form-select bg-dark text-white"
+            required
+          >
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
@@ -26,7 +30,7 @@
               <input
                 v-model="form.weightLbs"
                 type="number"
-                class="form-control"
+                class="form-control bg-dark text-white"
                 id="weight"
                 placeholder="Weight(lbs)"
                 required
@@ -41,7 +45,7 @@
               <input
                 v-model="form.age"
                 type="number"
-                class="form-control"
+                class="form-control bg-dark text-white"
                 id="age"
                 placeholder="Age(years)"
                 required
@@ -60,7 +64,7 @@
               <input
                 v-model="form.heightFt"
                 type="number"
-                class="form-control"
+                class="form-control bg-dark text-white"
                 id="feet"
                 placeholder="Height(ft)"
                 required
@@ -75,7 +79,7 @@
               <input
                 v-model="form.heightIn"
                 type="number"
-                class="form-control"
+                class="form-control bg-dark text-white"
                 id="inches"
                 placeholder="Inches"
                 required
@@ -89,7 +93,11 @@
         <!-- Activity Level -->
         <fieldset class="row mb-3" id="sex">
           <label>Activity Level</label>
-          <select v-model="form.activity" class="form-select" required>
+          <select
+            v-model="form.activity"
+            class="form-select bg-dark text-white"
+            required
+          >
             <option value="sedentary">Sedentary (little to no exercise)</option>
             <option value="light">
               Lightly Active (light exercise 1-3 days/wk)
@@ -110,7 +118,11 @@
         <!-- Goal -->
         <fieldset class="row mb-3" id="sex">
           <label>Goal</label>
-          <select v-model="form.goal" class="form-select" required>
+          <select
+            v-model="form.goal"
+            class="form-select bg-dark text-white"
+            required
+          >
             <option value="gain">Weight Gain</option>
             <option value="loss">Weight Loss</option>
           </select>
@@ -128,7 +140,7 @@
             <input
               v-model="form.rate"
               type="range"
-              class="form-range"
+              class="form-range bg-dark text-white"
               min="0"
               max="10"
               step="1"
@@ -148,7 +160,7 @@
               <input
                 v-model="form.proteinPercent"
                 type="number"
-                class="form-control"
+                class="form-control bg-dark text-white"
                 id="protein"
                 placeholder="Protein(%)"
                 required
@@ -161,7 +173,7 @@
               <input
                 v-model="form.carbsPercent"
                 type="number"
-                class="form-control"
+                class="form-control bg-dark text-white"
                 id="carbs"
                 placeholder="Carbs(%)"
                 required
@@ -174,7 +186,7 @@
               <input
                 v-model="form.fatsPercent"
                 type="number"
-                class="form-control"
+                class="form-control bg-dark text-white"
                 id="fats"
                 placeholder="Fats(%)"
                 required
@@ -187,7 +199,11 @@
 
         <fieldset class="row mb-3">
           <label>How many meals do you eat per day?</label>
-          <select v-model="form.meals" class="form-select" required>
+          <select
+            v-model="form.meals"
+            class="form-select bg-dark text-white"
+            required
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -206,43 +222,41 @@
       </form>
       <br />
 
-      <div v-if="data.submitted === true">
-        <h5 id="output1" class="text-start">{{ data.output.output1 }}</h5>
+      <div v-if="data.submitted === true" class="bg-dark text-white">
+        <h5 id="output1" class="text-start bg-dark text-white">
+          {{ data.output.output1 }}
+        </h5>
 
         <h5 id="output2" class="text-start">{{ data.output.output2 }}</h5>
 
         <h5 id="output3" class="text-start">{{ data.output.output3 }}</h5>
         <br />
-
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Meal</th>
-              <th scope="col">Protein</th>
-              <th scope="col">Carbs</th>
-              <th scope="col">Fats</th>
-              <th scope="col">Randomly Generated Meal Using Database</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="meal in data.output.mealsArray">
-              <td>{{ meal.mealNumber }}</td>
-              <td>{{ meal.protein }}</td>
-              <td>{{ meal.carbs }}</td>
-              <td>{{ meal.fats }}</td>
-              <td id="generated">{{ meal.generatedMeal }}</td>
-              <td>
-                <button
-                  class="btn btn-danger btn-sm"
-                  @click="reGenerateSingleMeal(meal.mealNumber - 1)"
-                >
-                  Regenerate
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
+
+      <table class="table table-striped table-dark mb-0 table-responsive">
+        <tbody v-for="meal in data.output.mealsArray">
+          <tr>
+            <td>Meal {{ meal.mealNumber }}:</td>
+            <td>{{ meal.protein }}g Protein</td>
+            <td>{{ meal.carbs }}g Carbs</td>
+            <td>{{ meal.fats }}g Fats</td>
+            <td></td>
+          </tr>
+          <tr id="generated">
+            <td colspan="4">
+              {{ meal.generatedMeal }}
+            </td>
+            <td>
+              <button
+                class="btn btn-danger btn-sm"
+                @click="reGenerateSingleMeal(meal.mealNumber - 1)"
+              >
+                Regenerate
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       <button
         v-if="data.submitted === true"
@@ -251,7 +265,7 @@
       >
         Save Diet
       </button>
-
+      <br />
       <br />
     </div>
   </div>

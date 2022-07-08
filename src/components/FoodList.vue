@@ -1,6 +1,6 @@
 <template>
   <br />
-  <div class="container">
+  <div class="container bg-dark text-white">
     <h4>Data stored in firebase</h4>
     <router-link :to="`/calculator`">
       <button class="btn btn-primary mt-3">
@@ -12,11 +12,11 @@
     <br />
     <hr />
     <div class="table-responsive">
-      <table class="table">
+      <table class="table bg-dark text-white">
         <thead>
           <tr>
             <th scope="col">Name</th>
-            <th scope="col">Serving Type</th>
+            <th scope="col">Type</th>
             <th scope="col">Protein</th>
             <th scope="col">Carbs</th>
             <th scope="col">Fats</th>
