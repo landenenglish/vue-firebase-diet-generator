@@ -1,7 +1,16 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <img src="./assets/logo.png" class="navbar-brand" alt="" />
+      <div>
+        <img src="./assets/vue.png" class="navbar-brand" alt="" />
+        <img
+          id="fire"
+          src="./assets/firebase.png"
+          class="navbar-brand"
+          alt=""
+        />
+      </div>
+
       <span class="navbar-brand"> Menu</span>
       <button
         class="navbar-toggler"
@@ -102,6 +111,10 @@ const handleSignOut = () => {
 /* make image fit parent element */
 nav img {
   width: 1.75em;
+  height: auto;
+}
+#fire {
+  width: 1.5em;
   height: auto;
 }
 

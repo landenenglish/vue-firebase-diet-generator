@@ -279,7 +279,7 @@
 import { reactive } from 'vue'
 import { getUserData } from '@/CalcDiet/calculator.js'
 import { generateMeal } from '@/CalcDiet/generateMeals.js'
-import { getAllFoods, createUserDiet, getAllUserDiets } from '@/firebase'
+import { getAllFoods, createUserDiet } from '@/firebase'
 import { getAuth } from 'firebase/auth'
 
 export default {
