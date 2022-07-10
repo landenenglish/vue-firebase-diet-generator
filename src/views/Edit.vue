@@ -30,6 +30,8 @@
       <div class="form-group">
         <label>Grams of Protein Per Serving</label>
         <input
+          type="number"
+          step="0.1"
           v-model="form.protein"
           class="form-control bg-dark text-white"
           required
@@ -39,6 +41,8 @@
       <div class="form-group">
         <label>Grams of Carbs Per Serving</label>
         <input
+          type="number"
+          step="0.1"
           v-model="form.carbs"
           class="form-control bg-dark text-white"
           required
@@ -48,6 +52,8 @@
       <div class="form-group">
         <label>Grams of Fats Per Serving</label>
         <input
+          type="number"
+          step="0.1"
           v-model="form.fat"
           class="form-control bg-dark text-white"
           required
