@@ -6,6 +6,14 @@
 ### The user enters the foods they like to eat with nutritional information in the database, then caclulates their calories and macros based on their goal, then a meal plan with correct measurements for each meal is randomly generated with the foods they entered in the database.
 
 - - - -
+## How to use:
+### The default home page is the foods database where you can add/edit/delete foods from the database. Note that the foods database is currently shared accross all users (for now), so please do not delete all items or add unrealistic food items within reason.
+### Once you are happy with the foods in the database, you can head over to the Nutrition Calculator tab by either clicking the navbar button or the "Calculate Diet With Foods Database" button from the default home page.
+### On the nutrition calculator page, fill out the form with your info and goal, then select calculate. You will then be displayed with the results and a table of generated meals. The meals come from the foods database with accurate measurements based on your generated macros. You can regenerate each meal until you are happy with the diet, then press Save Diet, which will save to your account. You can view your saved diet on the "Your Diets" tab. You can save multiple diets. You must be logged in to save your diet of course, but you don't need to log in to add foods to the database or generate a diet.
+### You can register an account, sign in, or logout. You can sign in with Google.
+
+
+- - - -
 ## Demo
 ### https://vue-firebase-diet-generator.netlify.app/
 
