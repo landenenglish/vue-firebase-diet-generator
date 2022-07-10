@@ -38,8 +38,6 @@ export const getUserData = (userInput) => {
       fats,
       meals
     )
-    // scroll to bottom of page
-    // window.scrollTo(0, document.body.scrollHeight)
   }
 }
 

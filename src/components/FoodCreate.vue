@@ -1,8 +1,7 @@
 <template>
-  <div class="container border-light">
+  <div id="wrapper" class="container border-light">
     <div class="card card-body bg-dark text-white mt-4 border-light">
       <h1>Food Database</h1>
-      <h5>(pre-filled to test quickly)</h5>
       <form @submit.prevent="onSubmit">
         <div class="form-group">
           <label>Food Name</label>
@@ -71,11 +70,11 @@ import { reactive } from 'vue'
 export default {
   setup() {
     const form = reactive({
-      name: 'Chicken Breast',
-      measurement: 'oz',
-      protein: '7',
-      carbs: '0',
-      fat: '0',
+      name: '',
+      measurement: '',
+      protein: '',
+      carbs: '',
+      fat: '',
     })
 
     const onSubmit = async () => {
@@ -92,4 +91,9 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+#wrapper {
+  margin: 0 auto;
+  max-width: 600px;
+}
+</style>

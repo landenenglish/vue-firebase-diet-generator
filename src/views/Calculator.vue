@@ -1,6 +1,11 @@
+<!-- I understand this file is large and should be broken up into smaller components, I will improve it over time as I learn more Vue -->
+
 <template>
   <div class="container bg-dark text-white">
-    <div class="card card-body mt-4 bg-dark text-white border-light">
+    <div
+      id="calcWrapper"
+      class="card card-body mt-4 bg-dark text-white border-light"
+    >
       <div class="row bg-dark text-white">
         <div class="col-12">
           <h1 class="text-center">Nutrition Calculator</h1>
@@ -11,7 +16,7 @@
 
       <form @submit.prevent="onSubmit">
         <!-- Sex -->
-        <fieldset class="row mb-3 bg-dark text-white" id="sex">
+        <div class="form-group">
           <label>Sex</label>
           <select
             v-model="form.sex"
@@ -21,7 +26,8 @@
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
-        </fieldset>
+        </div>
+        <br />
 
         <!-- Weight -->
         <div class="row mb-3">
@@ -91,7 +97,7 @@
         <hr />
 
         <!-- Activity Level -->
-        <fieldset class="row mb-3" id="sex">
+        <div class="form-group">
           <label>Activity Level</label>
           <select
             v-model="form.activity"
@@ -112,11 +118,11 @@
               Extremely Active (hard exercise & work in a physical job)
             </option>
           </select>
-        </fieldset>
+        </div>
         <hr />
 
         <!-- Goal -->
-        <fieldset class="row mb-3" id="sex">
+        <div class="form-group">
           <label>Goal</label>
           <select
             v-model="form.goal"
@@ -126,11 +132,10 @@
             <option value="gain">Weight Gain</option>
             <option value="loss">Weight Loss</option>
           </select>
-        </fieldset>
+        </div>
         <hr />
 
         <!-- Rate -->
-
         <p class="text-center" id="sliderOutput">
           About {{ (form.rate * 7) / 35 }} lb of weight change per week
         </p>
@@ -197,7 +202,8 @@
         </div>
         <hr />
 
-        <fieldset class="row mb-3">
+        <!-- Number of meals -->
+        <div class="form-group">
           <label>How many meals do you eat per day?</label>
           <select
             v-model="form.meals"
@@ -212,8 +218,10 @@
             <option value="6">6</option>
             <option value="7">7</option>
           </select>
-        </fieldset>
+        </div>
+        <br />
 
+        <!-- Submit -->
         <div class="col-md-12 text-center">
           <button
             type="submit"
@@ -224,54 +232,58 @@
           </button>
         </div>
       </form>
-      <br />
+    </div>
+    <br />
 
-      <div v-if="data.submitted === true" class="bg-dark text-white">
-        <h5 id="output1" class="text-start bg-dark text-white">
-          {{ data.output.output1 }}
-        </h5>
+    <!-- Results -->
+    <div v-if="data.submitted === true" class="bg-dark text-white">
+      <h5 id="output1" class="text-start bg-dark text-white">
+        {{ data.output.output1 }}
+      </h5>
 
-        <h5 id="output2" class="text-start">{{ data.output.output2 }}</h5>
+      <h5 id="output2" class="text-start">{{ data.output.output2 }}</h5>
 
-        <h5 id="output3" class="text-start">{{ data.output.output3 }}</h5>
-        <br />
-      </div>
-
-      <table class="table table-striped table-dark mb-0 table-responsive">
-        <tbody v-for="meal in data.output.mealsArray">
-          <tr>
-            <td>Meal {{ meal.mealNumber }}:</td>
-            <td>{{ meal.protein }}g Protein</td>
-            <td>{{ meal.carbs }}g Carbs</td>
-            <td>{{ meal.fats }}g Fats</td>
-            <td></td>
-          </tr>
-          <tr id="generated">
-            <td colspan="4">
-              {{ meal.generatedMeal }}
-            </td>
-            <td>
-              <button
-                class="btn btn-danger btn-sm"
-                @click="reGenerateSingleMeal(meal.mealNumber - 1)"
-              >
-                Regenerate
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <button
-        v-if="data.submitted === true"
-        class="btn btn-success btn-lg"
-        @click="saveDiet()"
-      >
-        Save Diet
-      </button>
-      <br />
+      <h5 id="output3" class="text-start">{{ data.output.output3 }}</h5>
       <br />
     </div>
+
+    <table class="table table-striped table-dark mb-0 table-responsive">
+      <tbody v-for="meal in data.output.mealsArray">
+        <tr>
+          <td>Meal {{ meal.mealNumber }}:</td>
+          <td>{{ meal.protein }}g Protein</td>
+          <td>{{ meal.carbs }}g Carbs</td>
+          <td>{{ meal.fats }}g Fats</td>
+          <td></td>
+        </tr>
+        <tr id="generated">
+          <td colspan="4">
+            {{ meal.generatedMeal }}
+          </td>
+          <td>
+            <!-- Regenerate -->
+            <button
+              class="btn btn-danger btn-sm"
+              @click="reGenerateSingleMeal(meal.mealNumber - 1)"
+            >
+              Regenerate
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+
+    <!-- Save -->
+    <button
+      v-if="data.submitted === true"
+      class="btn btn-success w-100"
+      @click="saveDiet()"
+    >
+      Save Diet
+    </button>
+    <br />
+    <br />
   </div>
 </template>
 
@@ -294,19 +306,20 @@ export default {
     },
   },
   setup() {
+    // Kinda messy, but it works.
     const form = reactive({
-      sex: 'male',
-      weightLbs: 165,
-      age: 26,
-      heightFt: 5,
-      heightIn: 7,
-      activity: 'moderate',
-      goal: 'gain',
+      sex: '',
+      weightLbs: '',
+      age: '',
+      heightFt: '',
+      heightIn: '',
+      activity: '',
+      goal: '',
       rate: 5,
-      proteinPercent: 35,
-      carbsPercent: 35,
+      proteinPercent: 30,
+      carbsPercent: 40,
       fatsPercent: 30,
-      meals: 5,
+      meals: '',
     })
 
     let data = reactive({
@@ -342,10 +355,9 @@ export default {
       for (let i = 0; i < generatedMeals.length; i++) {
         data.output.mealsArray[i].generatedMeal = generatedMeals[i]
       }
-
-      // now scroll to the output section
     }
 
+    // Regenerate meal from list
     const reGenerateSingleMeal = async (mealNumber) => {
       const foodsArray = []
       const foods = await getAllFoods()
@@ -361,6 +373,7 @@ export default {
       data.output.mealsArray[mealNumber].generatedMeal = meal
     }
 
+    // Save diet to database
     const saveDiet = () => {
       const currentUser = getAuth()
 
@@ -375,15 +388,22 @@ export default {
         userDataObject.uid = currentUserID
         userDataObject.meals = data.output.mealsArray
         createUserDiet(userDataObject)
-        alert('Diet saved. You can view your diets in the My Diets tab.')
+        alert('Diet saved. You can view your diets in the Your Diets tab.')
       }
     }
 
     return { form, onSubmit, data, reGenerateSingleMeal, saveDiet }
+
+    // would be cool to save the user's form too
   },
 }
 </script>
 <style>
+#calcWrapper {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
 #generated {
   font-weight: bold;
 }

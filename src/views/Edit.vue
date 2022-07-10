@@ -1,16 +1,24 @@
 <template>
-  <div class="card card-body mt-4">
+  <div class="card card-body mt-4 bg-dark text-white border-light">
     <h3>Edit Food</h3>
     <form @submit.prevent="update">
       <div class="form-group">
         <label>Name</label>
-        <input v-model="form.name" class="form-control" required />
+        <input
+          v-model="form.name"
+          class="form-control bg-dark text-white"
+          required
+        />
       </div>
 
       <!-- select measurement type dropdown -->
       <div class="form-group">
         <label>Serving Measurement Type</label>
-        <select v-model="form.measurement" class="form-select" required>
+        <select
+          v-model="form.measurement"
+          class="form-select bg-dark text-white"
+          required
+        >
           <option value="g">g</option>
           <option value="oz">oz</option>
           <option value="cup">cup</option>
@@ -21,17 +29,29 @@
       <!-- Protein Per Serving -->
       <div class="form-group">
         <label>Grams of Protein Per Serving</label>
-        <input v-model="form.protein" class="form-control" required />
+        <input
+          v-model="form.protein"
+          class="form-control bg-dark text-white"
+          required
+        />
       </div>
       <!-- Carbs Per Serving -->
       <div class="form-group">
         <label>Grams of Carbs Per Serving</label>
-        <input v-model="form.carbs" class="form-control" required />
+        <input
+          v-model="form.carbs"
+          class="form-control bg-dark text-white"
+          required
+        />
       </div>
       <!-- Fat Per Serving -->
       <div class="form-group">
         <label>Grams of Fats Per Serving</label>
-        <input v-model="form.fat" class="form-control" required />
+        <input
+          v-model="form.fat"
+          class="form-control bg-dark text-white"
+          required
+        />
       </div>
 
       <button type="submit" class="btn btn-primary mt-3">Update</button>

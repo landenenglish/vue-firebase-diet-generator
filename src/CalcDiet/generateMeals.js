@@ -1,3 +1,5 @@
+// algorith to generate a meal
+
 export const generateMeal = (protein, carbs, fat, foods) => {
   for (let i = 0; i < foods.length; i++) {
     foods[i].protein = parseInt(foods[i].protein)

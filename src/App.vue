@@ -1,6 +1,8 @@
 <template>
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
+      <!-- Logos -->
       <div>
         <img src="./assets/vue.png" class="navbar-brand" alt="" />
         <img
@@ -9,9 +11,10 @@
           class="navbar-brand"
           alt=""
         />
+        <span id="menu" class="navbar-brand"> Menu</span>
       </div>
 
-      <span class="navbar-brand"> Menu</span>
+      <!-- Hamburger -->
       <button
         class="navbar-toggler"
         type="button"
@@ -23,6 +26,7 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-4 mb-lg-0">
           <li class="nav-item">
@@ -30,29 +34,34 @@
               >Food Database</router-link
             >
           </li>
+
           <li>
             <router-link class="nav-link text-light" to="/calculator"
               >Nutrition Calculator</router-link
             >
           </li>
+
           <li>
             <router-link class="nav-link text-light" to="/yourdiets"
               >Your Diets</router-link
             >
           </li>
 
-          <li>
+          <!-- Only show if not logged in -->
+          <li v-if="isLoggedIn === false">
             <router-link class="nav-link text-light" to="/register"
               >Register</router-link
             >
           </li>
-          <li>
+
+          <!-- Only show if not logged in -->
+          <li v-if="isLoggedIn === false">
             <router-link class="nav-link text-light" to="/signin"
               >Sign In</router-link
             >
           </li>
 
-          <li>
+          <li id="logout">
             <button
               class="btn btn-danger"
               @click="handleSignOut"
@@ -108,11 +117,11 @@ const handleSignOut = () => {
   background-color: #202529;
 }
 
-/* make image fit parent element */
 nav img {
   width: 1.75em;
   height: auto;
 }
+
 #fire {
   width: 1.5em;
   height: auto;
@@ -125,8 +134,11 @@ nav img {
 }
 
 ul a.router-link-exact-active {
-  /* add a border to bottom */
   border-bottom: 2px solid #ffa000;
+}
+
+#logout {
+  margin-top: 0.5em;
 }
 
 ul {
@@ -137,10 +149,4 @@ ul {
   width: 100%;
   font-weight: bold;
 }
-
-/* #navbarSupportedContent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 </style>

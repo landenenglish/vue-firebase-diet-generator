@@ -53,7 +53,51 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth'
+import { useRouter } from 'vue-router'
+
+const email = ref('')
+const password = ref('')
+const router = useRouter()
+
+// Register with email and password
+const register = () => {
+  createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    .then((data) => {
+      console.log('Registered')
+      router.push('/')
+    })
+    .catch((error) => {
+      console.log(error)
+      alert(error.message)
+    })
+}
+
+// Sign in with Google
+const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider()
+  signInWithPopup(getAuth(), provider)
+    .then((result) => {
+      console.log(result.user)
+      router.push('/')
+    })
+    .catch((error) => {
+      console.log(error)
+      alert(error.message)
+    })
+}
+</script>
+
 <style>
+/* Google button */
 /* Codepen credit: */
 /* https://codepen.io/mupkoo/pen/YgddgB */
 .login-with-google-btn {
@@ -78,43 +122,3 @@
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 </style>
-
-<script setup>
-import { ref } from 'vue'
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from 'firebase/auth'
-import { useRouter } from 'vue-router'
-
-const email = ref('')
-const password = ref('')
-const router = useRouter()
-
-const register = () => {
-  createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then((data) => {
-      console.log('Registered')
-      router.push('/')
-    })
-    .catch((error) => {
-      console.log(error)
-      alert(error.message)
-    })
-}
-
-const signInWithGoogle = () => {
-  const provider = new GoogleAuthProvider()
-  signInWithPopup(getAuth(), provider)
-    .then((result) => {
-      console.log(result.user)
-      router.push('/')
-    })
-    .catch((error) => {
-      console.log(error)
-      alert(error.message)
-    })
-}
-</script>

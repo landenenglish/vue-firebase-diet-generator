@@ -8,10 +8,10 @@
       </button>
     </router-link>
     <br />
-
     <br />
     <hr />
     <div class="table-responsive">
+      <!-- table that loops and displays each food item in the database -->
       <table class="table bg-dark text-white">
         <thead>
           <tr>
