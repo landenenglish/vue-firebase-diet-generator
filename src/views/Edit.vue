@@ -1,5 +1,5 @@
 <template>
-  <div class="card card-body mt-4 bg-dark text-white border-light">
+  <div id="edit" class="card card-body mt-4 bg-dark text-white border-light">
     <h3>Edit Food</h3>
     <form @submit.prevent="update">
       <div class="form-group">
@@ -19,11 +19,11 @@
           class="form-select bg-dark text-white"
           required
         >
-          <option value="g">g</option>
-          <option value="oz">oz</option>
-          <option value="cup">cup</option>
-          <option value="tbsp">tbsp</option>
-          <option value="">{{ form.name }}</option>
+          <option value="g">1 g</option>
+          <option value="oz">1 oz</option>
+          <option value="cup">1 cup</option>
+          <option value="tbsp">1 tbsp</option>
+          <option value="">1 {{ form.name }}</option>
         </select>
       </div>
       <!-- Protein Per Serving -->
@@ -78,6 +78,7 @@ export default {
       carbs: '',
       fat: '',
     })
+
     onMounted(async () => {
       const food = await getFood(foodId.value)
       form.name = food.name
@@ -101,3 +102,10 @@ export default {
   },
 }
 </script>
+
+<style>
+#edit {
+  margin: 0 auto;
+  max-width: 500px;
+}
+</style>

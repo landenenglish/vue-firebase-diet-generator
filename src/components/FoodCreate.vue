@@ -20,12 +20,11 @@
             class="form-select bg-dark text-white"
             required
           >
-            <option value="g">g</option>
-            <option value="oz">oz</option>
-            <option value="cup">cup</option>
-            <option value="tbsp">tbsp</option>
-            <option value="">{{ form.name }}</option>
-            <!-- i want an option with form.name and value of form.name -->
+            <option value="g">1 g</option>
+            <option value="oz">1 oz</option>
+            <option value="cup">1 cup</option>
+            <option value="tbsp">1 tbsp</option>
+            <option v-if="form.name !== ''" value="">1 {{ form.name }}</option>
           </select>
         </div>
 

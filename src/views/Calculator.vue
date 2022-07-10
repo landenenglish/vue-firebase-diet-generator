@@ -8,8 +8,14 @@
     >
       <div class="row bg-dark text-white">
         <div class="col-12">
-          <h1 class="text-center">Nutrition Calculator</h1>
-          <h5>(pre-filled to test quickly)</h5>
+          <h2 class="text-center">Nutrition Calculator</h2>
+          <h6>Based on the Mifflin St. Jeor Equation</h6>
+          <button
+            class="btn btn-primary btn-sm"
+            @click="quicklyFillFormToTest()"
+          >
+            Quickly Fill Form To Test
+          </button>
         </div>
       </div>
       <br />
@@ -316,9 +322,9 @@ export default {
       activity: '',
       goal: '',
       rate: 5,
-      proteinPercent: 30,
+      proteinPercent: 35,
       carbsPercent: 40,
-      fatsPercent: 30,
+      fatsPercent: 25,
       meals: '',
     })
 
@@ -326,6 +332,21 @@ export default {
       output: '',
       submitted: false,
     })
+
+    const quicklyFillFormToTest = () => {
+      form.sex = 'male'
+      form.weightLbs = 165
+      form.age = 26
+      form.heightFt = 5
+      form.heightIn = 7
+      form.activity = 'moderate'
+      form.goal = 'gain'
+      form.rate = 5
+      form.proteinPercent = 35
+      form.carbsPercent = 40
+      form.fatsPercent = 25
+      form.meals = 6
+    }
 
     const onSubmit = async () => {
       data.submitted = true
@@ -392,7 +413,14 @@ export default {
       }
     }
 
-    return { form, onSubmit, data, reGenerateSingleMeal, saveDiet }
+    return {
+      form,
+      onSubmit,
+      data,
+      reGenerateSingleMeal,
+      saveDiet,
+      quicklyFillFormToTest,
+    }
 
     // would be cool to save the user's form too
   },
