@@ -55,6 +55,9 @@
 </template>
 
 <script setup>
+// I used this 9min youtube tutorial to help learn firebase authentication:
+// https://www.youtube.com/watch?v=xceR7mrrXsA
+
 import { ref } from 'vue'
 import {
   getAuth,
